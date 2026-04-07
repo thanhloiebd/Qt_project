@@ -7,7 +7,12 @@
 #include <QPushButton>
 #include <QTableView>
 #include <QVBoxLayout>
+#include <QHBoxLayout>
 #include <QStandardItemModel>
+#include <QComboBox>
+#include <QProgressBar>
+
+// --- Authentication Pages ---
 
 class LoginPage : public QWidget {
     Q_OBJECT
@@ -32,11 +37,17 @@ signals:
     void goLogin();
 private slots:
     void onRegisterClicked();
+    void onPasswordChanged(const QString& pwd);
 private:
     QLineEdit* userEdit;
     QLineEdit* passEdit;
     QLineEdit* confirmEdit;
+    QLineEdit* pinEdit;
+    QProgressBar* strengthBar;
+    QLabel* strengthLabel;
 };
+
+// --- App Pages ---
 
 class DashboardPage : public QWidget {
     Q_OBJECT
@@ -44,35 +55,58 @@ public:
     explicit DashboardPage(QWidget* parent = nullptr);
     void refresh();
 signals:
-    void goTransfer();
-    void goHistory();
-    void logout();
+    // none needed for dashboard itself if navigation is in sidebar
 private:
-    QLabel* balanceLabel;
-    QLabel* userLabel;
+    QLabel* greetingLabel;
+    QLabel* netWorthLabel;
 };
 
-class PaymentPage : public QWidget {
+class WalletsPage : public QWidget {
     Q_OBJECT
 public:
-    explicit PaymentPage(QWidget* parent = nullptr);
-signals:
-    void goDashboard();
+    explicit WalletsPage(QWidget* parent = nullptr);
+    void refresh();
+private slots:
+    void onFundClicked();
+private:
+    QLabel* vndLabel;
+    QLabel* btcLabel;
+    QLineEdit* fundAmountEdit;
+};
+
+class TransferPage : public QWidget {
+    Q_OBJECT
+public:
+    explicit TransferPage(QWidget* parent = nullptr);
+    void refresh();
 private slots:
     void onTransferClicked();
 private:
-    QLineEdit* amountEdit;
+    QComboBox* currencyCombo;
     QLineEdit* recipientEdit;
+    QLineEdit* amountEdit;
     QLineEdit* noteEdit;
+};
+
+class SwapPage : public QWidget {
+    Q_OBJECT
+public:
+    explicit SwapPage(QWidget* parent = nullptr);
+    void refresh();
+private slots:
+    void onSwapClicked();
+    void onAmountChanged(const QString& text);
+private:
+    QLineEdit* fromAmountEdit;
+    QLabel* toAmountLabel;
+    double currentRate; // VND per 1 BTC
 };
 
 class HistoryPage : public QWidget {
     Q_OBJECT
 public:
     explicit HistoryPage(QWidget* parent = nullptr);
-    void loadHistory();
-signals:
-    void goDashboard();
+    void refresh();
 private:
     QTableView* tableView;
     QStandardItemModel* model;

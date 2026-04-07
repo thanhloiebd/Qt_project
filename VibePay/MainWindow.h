@@ -3,6 +3,8 @@
 
 #include <QMainWindow>
 #include <QStackedWidget>
+#include <QPushButton>
+#include <QWidget>
 #include "Pages.h"
 
 class MainWindow : public QMainWindow {
@@ -12,17 +14,39 @@ public:
     ~MainWindow();
 
 private slots:
-    void switchPage(QWidget* targetPage);
+    void performLogout();
+    void showDashboard();
+    void showWallets();
+    void showTransfer();
+    void showSwap();
+    void showHistory();
+
+    void onLoginSuccess();
+    void onGoRegister();
+    void onGoLogin();
 
 private:
     void setupUi();
     void applyStyle();
+    
+    QWidget* createSidebar();
 
-    QStackedWidget* stackedWidget;
+    QStackedWidget* rootStackedWidget; // Lớp thứ nhất: 0 = Đăng nhập, 1 = Giao diện App
+    
+    // Giao diện Authentication
+    QStackedWidget* authStackedWidget;
     LoginPage* loginPage;
     RegisterPage* registerPage;
+
+    // Giao diện App
+    QWidget* appContainer;
+    QWidget* sidebar;
+    QStackedWidget* appStackedWidget; // Lớp thứ hai: Các module trong app
+    
     DashboardPage* dashboardPage;
-    PaymentPage* paymentPage;
+    WalletsPage* walletsPage;
+    TransferPage* transferPage;
+    SwapPage* swapPage;
     HistoryPage* historyPage;
 };
 
