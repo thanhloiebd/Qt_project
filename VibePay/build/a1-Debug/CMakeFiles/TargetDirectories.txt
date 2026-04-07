@@ -1,0 +1,5 @@
+D:/WORKSPACE/QT_Project/VibePay/build/a1-Debug/CMakeFiles/VibePay.dir
+D:/WORKSPACE/QT_Project/VibePay/build/a1-Debug/CMakeFiles/edit_cache.dir
+D:/WORKSPACE/QT_Project/VibePay/build/a1-Debug/CMakeFiles/rebuild_cache.dir
+D:/WORKSPACE/QT_Project/VibePay/build/a1-Debug/CMakeFiles/VibePay_autogen_timestamp_deps.dir
+D:/WORKSPACE/QT_Project/VibePay/build/a1-Debug/CMakeFiles/VibePay_autogen.dir

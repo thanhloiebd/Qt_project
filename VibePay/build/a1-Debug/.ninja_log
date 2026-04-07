@@ -1,0 +1,11 @@
+# ninja log v6
+2	579	7972743471931896	VibePay_autogen/timestamp	50416e42802900f7
+2	579	7972743471931896	VibePay_autogen/mocs_compilation.cpp	50416e42802900f7
+2	579	7972743471931896	D:/WORKSPACE/QT_Project/VibePay/build/a1-Debug/VibePay_autogen/timestamp	50416e42802900f7
+2	579	7972743471931896	D:/WORKSPACE/QT_Project/VibePay/build/a1-Debug/VibePay_autogen/mocs_compilation.cpp	50416e42802900f7
+594	4038	7972743472724065	CMakeFiles/VibePay.dir/Database.cpp.obj	d1d4124c5ff1cf6b
+587	4885	7972743472658648	CMakeFiles/VibePay.dir/main.cpp.obj	700716fff952aa28
+590	5062	7972743472693660	CMakeFiles/VibePay.dir/MainWindow.cpp.obj	7ee88e0d2542a5f8
+584	5095	7972743472626562	CMakeFiles/VibePay.dir/VibePay_autogen/mocs_compilation.cpp.obj	91669a5fbf8abadc
+598	5208	7972743472762189	CMakeFiles/VibePay.dir/Pages.cpp.obj	895983af099769a9
+5209	5589	7972743518874878	VibePay.exe	c5867a69047c374
