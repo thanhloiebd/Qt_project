@@ -4,8 +4,13 @@
 #include <QMainWindow>
 #include <QStackedWidget>
 #include <QPushButton>
-#include <QWidget>
-#include "Pages.h"
+#include "pages/LoginPage.h"
+#include "pages/RegisterPage.h"
+#include "pages/DashboardPage.h"
+#include "pages/WalletsPage.h"
+#include "pages/TransferPage.h"
+#include "pages/SwapPage.h"
+#include "pages/HistoryPage.h"
 
 class MainWindow : public QMainWindow {
     Q_OBJECT

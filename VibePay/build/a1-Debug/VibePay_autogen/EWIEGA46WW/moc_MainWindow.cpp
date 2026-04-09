@@ -40,17 +40,37 @@ template <> constexpr inline auto MainWindow::qt_create_metaobjectdata<qt_meta_t
     namespace QMC = QtMocConstants;
     QtMocHelpers::StringRefStorage qt_stringData {
         "MainWindow",
-        "switchPage",
+        "performLogout",
         "",
-        "QWidget*",
-        "targetPage"
+        "showDashboard",
+        "showWallets",
+        "showTransfer",
+        "showSwap",
+        "showHistory",
+        "onLoginSuccess",
+        "onGoRegister",
+        "onGoLogin"
     };
 
     QtMocHelpers::UintData qt_methods {
-        // Slot 'switchPage'
-        QtMocHelpers::SlotData<void(QWidget *)>(1, 2, QMC::AccessPrivate, QMetaType::Void, {{
-            { 0x80000000 | 3, 4 },
-        }}),
+        // Slot 'performLogout'
+        QtMocHelpers::SlotData<void()>(1, 2, QMC::AccessPrivate, QMetaType::Void),
+        // Slot 'showDashboard'
+        QtMocHelpers::SlotData<void()>(3, 2, QMC::AccessPrivate, QMetaType::Void),
+        // Slot 'showWallets'
+        QtMocHelpers::SlotData<void()>(4, 2, QMC::AccessPrivate, QMetaType::Void),
+        // Slot 'showTransfer'
+        QtMocHelpers::SlotData<void()>(5, 2, QMC::AccessPrivate, QMetaType::Void),
+        // Slot 'showSwap'
+        QtMocHelpers::SlotData<void()>(6, 2, QMC::AccessPrivate, QMetaType::Void),
+        // Slot 'showHistory'
+        QtMocHelpers::SlotData<void()>(7, 2, QMC::AccessPrivate, QMetaType::Void),
+        // Slot 'onLoginSuccess'
+        QtMocHelpers::SlotData<void()>(8, 2, QMC::AccessPrivate, QMetaType::Void),
+        // Slot 'onGoRegister'
+        QtMocHelpers::SlotData<void()>(9, 2, QMC::AccessPrivate, QMetaType::Void),
+        // Slot 'onGoLogin'
+        QtMocHelpers::SlotData<void()>(10, 2, QMC::AccessPrivate, QMetaType::Void),
     };
     QtMocHelpers::UintData qt_properties {
     };
@@ -74,22 +94,19 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
     auto *_t = static_cast<MainWindow *>(_o);
     if (_c == QMetaObject::InvokeMetaMethod) {
         switch (_id) {
-        case 0: _t->switchPage((*reinterpret_cast<std::add_pointer_t<QWidget*>>(_a[1]))); break;
+        case 0: _t->performLogout(); break;
+        case 1: _t->showDashboard(); break;
+        case 2: _t->showWallets(); break;
+        case 3: _t->showTransfer(); break;
+        case 4: _t->showSwap(); break;
+        case 5: _t->showHistory(); break;
+        case 6: _t->onLoginSuccess(); break;
+        case 7: _t->onGoRegister(); break;
+        case 8: _t->onGoLogin(); break;
         default: ;
         }
     }
-    if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        switch (_id) {
-        default: *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType(); break;
-        case 0:
-            switch (*reinterpret_cast<int*>(_a[1])) {
-            default: *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType(); break;
-            case 0:
-                *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType::fromType< QWidget* >(); break;
-            }
-            break;
-        }
-    }
+    (void)_a;
 }
 
 const QMetaObject *MainWindow::metaObject() const
@@ -111,14 +128,14 @@ int MainWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 1)
+        if (_id < 9)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 1;
+        _id -= 9;
     }
     if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 1)
-            qt_static_metacall(this, _c, _id, _a);
-        _id -= 1;
+        if (_id < 9)
+            *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
+        _id -= 9;
     }
     return _id;
 }

@@ -15,8 +15,20 @@ add_executable(VibePay
     MainWindow.h
     Database.cpp
     Database.h
-    Pages.cpp
-    Pages.h
+    pages/LoginPage.cpp
+    pages/LoginPage.h
+    pages/RegisterPage.cpp
+    pages/RegisterPage.h
+    pages/DashboardPage.cpp
+    pages/DashboardPage.h
+    pages/WalletsPage.cpp
+    pages/WalletsPage.h
+    pages/TransferPage.cpp
+    pages/TransferPage.h
+    pages/SwapPage.cpp
+    pages/SwapPage.h
+    pages/HistoryPage.cpp
+    pages/HistoryPage.h
 )
 
 target_link_libraries(VibePay PRIVATE

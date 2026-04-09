@@ -168,9 +168,12 @@ D:/WORKSPACE/QT_Project/VibePay/build/a1-Debug/VibePay_autogen/EWIEGA46WW/moc_Ma
   D:/Qt_app/6.10.1/mingw_64/include/QtGui/qvalidator.h \
   D:/Qt_app/6.10.1/mingw_64/include/QtGui/qwindowdefs.h \
   D:/Qt_app/6.10.1/mingw_64/include/QtGui/qwindowdefs_win.h \
+  D:/Qt_app/6.10.1/mingw_64/include/QtWidgets/QComboBox \
+  D:/Qt_app/6.10.1/mingw_64/include/QtWidgets/QHBoxLayout \
   D:/Qt_app/6.10.1/mingw_64/include/QtWidgets/QLabel \
   D:/Qt_app/6.10.1/mingw_64/include/QtWidgets/QLineEdit \
   D:/Qt_app/6.10.1/mingw_64/include/QtWidgets/QMainWindow \
+  D:/Qt_app/6.10.1/mingw_64/include/QtWidgets/QProgressBar \
   D:/Qt_app/6.10.1/mingw_64/include/QtWidgets/QPushButton \
   D:/Qt_app/6.10.1/mingw_64/include/QtWidgets/QStackedWidget \
   D:/Qt_app/6.10.1/mingw_64/include/QtWidgets/QTableView \
@@ -183,6 +186,7 @@ D:/WORKSPACE/QT_Project/VibePay/build/a1-Debug/VibePay_autogen/EWIEGA46WW/moc_Ma
   D:/Qt_app/6.10.1/mingw_64/include/QtWidgets/qabstractslider.h \
   D:/Qt_app/6.10.1/mingw_64/include/QtWidgets/qabstractspinbox.h \
   D:/Qt_app/6.10.1/mingw_64/include/QtWidgets/qboxlayout.h \
+  D:/Qt_app/6.10.1/mingw_64/include/QtWidgets/qcombobox.h \
   D:/Qt_app/6.10.1/mingw_64/include/QtWidgets/qframe.h \
   D:/Qt_app/6.10.1/mingw_64/include/QtWidgets/qgridlayout.h \
   D:/Qt_app/6.10.1/mingw_64/include/QtWidgets/qlabel.h \
@@ -190,6 +194,7 @@ D:/WORKSPACE/QT_Project/VibePay/build/a1-Debug/VibePay_autogen/EWIEGA46WW/moc_Ma
   D:/Qt_app/6.10.1/mingw_64/include/QtWidgets/qlayoutitem.h \
   D:/Qt_app/6.10.1/mingw_64/include/QtWidgets/qlineedit.h \
   D:/Qt_app/6.10.1/mingw_64/include/QtWidgets/qmainwindow.h \
+  D:/Qt_app/6.10.1/mingw_64/include/QtWidgets/qprogressbar.h \
   D:/Qt_app/6.10.1/mingw_64/include/QtWidgets/qpushbutton.h \
   D:/Qt_app/6.10.1/mingw_64/include/QtWidgets/qrubberband.h \
   D:/Qt_app/6.10.1/mingw_64/include/QtWidgets/qsizepolicy.h \

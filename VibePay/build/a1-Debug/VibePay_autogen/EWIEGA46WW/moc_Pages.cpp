@@ -144,7 +144,9 @@ template <> constexpr inline auto RegisterPage::qt_create_metaobjectdata<qt_meta
         "registerSuccess",
         "",
         "goLogin",
-        "onRegisterClicked"
+        "onRegisterClicked",
+        "onPasswordChanged",
+        "pwd"
     };
 
     QtMocHelpers::UintData qt_methods {
@@ -154,6 +156,10 @@ template <> constexpr inline auto RegisterPage::qt_create_metaobjectdata<qt_meta
         QtMocHelpers::SignalData<void()>(3, 2, QMC::AccessPublic, QMetaType::Void),
         // Slot 'onRegisterClicked'
         QtMocHelpers::SlotData<void()>(4, 2, QMC::AccessPrivate, QMetaType::Void),
+        // Slot 'onPasswordChanged'
+        QtMocHelpers::SlotData<void(const QString &)>(5, 2, QMC::AccessPrivate, QMetaType::Void, {{
+            { QMetaType::QString, 6 },
+        }}),
     };
     QtMocHelpers::UintData qt_properties {
     };
@@ -180,6 +186,7 @@ void RegisterPage::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id
         case 0: _t->registerSuccess(); break;
         case 1: _t->goLogin(); break;
         case 2: _t->onRegisterClicked(); break;
+        case 3: _t->onPasswordChanged((*reinterpret_cast<std::add_pointer_t<QString>>(_a[1]))); break;
         default: ;
         }
     }
@@ -210,14 +217,14 @@ int RegisterPage::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 3)
+        if (_id < 4)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 3;
+        _id -= 4;
     }
     if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 3)
+        if (_id < 4)
             *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
-        _id -= 3;
+        _id -= 4;
     }
     return _id;
 }
@@ -241,20 +248,10 @@ template <> constexpr inline auto DashboardPage::qt_create_metaobjectdata<qt_met
 {
     namespace QMC = QtMocConstants;
     QtMocHelpers::StringRefStorage qt_stringData {
-        "DashboardPage",
-        "goTransfer",
-        "",
-        "goHistory",
-        "logout"
+        "DashboardPage"
     };
 
     QtMocHelpers::UintData qt_methods {
-        // Signal 'goTransfer'
-        QtMocHelpers::SignalData<void()>(1, 2, QMC::AccessPublic, QMetaType::Void),
-        // Signal 'goHistory'
-        QtMocHelpers::SignalData<void()>(3, 2, QMC::AccessPublic, QMetaType::Void),
-        // Signal 'logout'
-        QtMocHelpers::SignalData<void()>(4, 2, QMC::AccessPublic, QMetaType::Void),
     };
     QtMocHelpers::UintData qt_properties {
     };
@@ -276,22 +273,10 @@ Q_CONSTINIT const QMetaObject DashboardPage::staticMetaObject = { {
 void DashboardPage::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
 {
     auto *_t = static_cast<DashboardPage *>(_o);
-    if (_c == QMetaObject::InvokeMetaMethod) {
-        switch (_id) {
-        case 0: _t->goTransfer(); break;
-        case 1: _t->goHistory(); break;
-        case 2: _t->logout(); break;
-        default: ;
-        }
-    }
-    if (_c == QMetaObject::IndexOfMethod) {
-        if (QtMocHelpers::indexOfMethod<void (DashboardPage::*)()>(_a, &DashboardPage::goTransfer, 0))
-            return;
-        if (QtMocHelpers::indexOfMethod<void (DashboardPage::*)()>(_a, &DashboardPage::goHistory, 1))
-            return;
-        if (QtMocHelpers::indexOfMethod<void (DashboardPage::*)()>(_a, &DashboardPage::logout, 2))
-            return;
-    }
+    (void)_t;
+    (void)_c;
+    (void)_id;
+    (void)_a;
 }
 
 const QMetaObject *DashboardPage::metaObject() const
@@ -310,105 +295,226 @@ void *DashboardPage::qt_metacast(const char *_clname)
 int DashboardPage::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 {
     _id = QWidget::qt_metacall(_c, _id, _a);
-    if (_id < 0)
-        return _id;
-    if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 3)
-            qt_static_metacall(this, _c, _id, _a);
-        _id -= 3;
-    }
-    if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 3)
-            *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
-        _id -= 3;
-    }
     return _id;
 }
-
-// SIGNAL 0
-void DashboardPage::goTransfer()
-{
-    QMetaObject::activate(this, &staticMetaObject, 0, nullptr);
-}
-
-// SIGNAL 1
-void DashboardPage::goHistory()
-{
-    QMetaObject::activate(this, &staticMetaObject, 1, nullptr);
-}
-
-// SIGNAL 2
-void DashboardPage::logout()
-{
-    QMetaObject::activate(this, &staticMetaObject, 2, nullptr);
-}
 namespace {
-struct qt_meta_tag_ZN11PaymentPageE_t {};
+struct qt_meta_tag_ZN11WalletsPageE_t {};
 } // unnamed namespace
 
-template <> constexpr inline auto PaymentPage::qt_create_metaobjectdata<qt_meta_tag_ZN11PaymentPageE_t>()
+template <> constexpr inline auto WalletsPage::qt_create_metaobjectdata<qt_meta_tag_ZN11WalletsPageE_t>()
 {
     namespace QMC = QtMocConstants;
     QtMocHelpers::StringRefStorage qt_stringData {
-        "PaymentPage",
-        "goDashboard",
-        "",
-        "onTransferClicked"
+        "WalletsPage",
+        "onFundClicked",
+        ""
     };
 
     QtMocHelpers::UintData qt_methods {
-        // Signal 'goDashboard'
-        QtMocHelpers::SignalData<void()>(1, 2, QMC::AccessPublic, QMetaType::Void),
-        // Slot 'onTransferClicked'
-        QtMocHelpers::SlotData<void()>(3, 2, QMC::AccessPrivate, QMetaType::Void),
+        // Slot 'onFundClicked'
+        QtMocHelpers::SlotData<void()>(1, 2, QMC::AccessPrivate, QMetaType::Void),
     };
     QtMocHelpers::UintData qt_properties {
     };
     QtMocHelpers::UintData qt_enums {
     };
-    return QtMocHelpers::metaObjectData<PaymentPage, qt_meta_tag_ZN11PaymentPageE_t>(QMC::MetaObjectFlag{}, qt_stringData,
+    return QtMocHelpers::metaObjectData<WalletsPage, qt_meta_tag_ZN11WalletsPageE_t>(QMC::MetaObjectFlag{}, qt_stringData,
             qt_methods, qt_properties, qt_enums);
 }
-Q_CONSTINIT const QMetaObject PaymentPage::staticMetaObject = { {
+Q_CONSTINIT const QMetaObject WalletsPage::staticMetaObject = { {
     QMetaObject::SuperData::link<QWidget::staticMetaObject>(),
-    qt_staticMetaObjectStaticContent<qt_meta_tag_ZN11PaymentPageE_t>.stringdata,
-    qt_staticMetaObjectStaticContent<qt_meta_tag_ZN11PaymentPageE_t>.data,
+    qt_staticMetaObjectStaticContent<qt_meta_tag_ZN11WalletsPageE_t>.stringdata,
+    qt_staticMetaObjectStaticContent<qt_meta_tag_ZN11WalletsPageE_t>.data,
     qt_static_metacall,
     nullptr,
-    qt_staticMetaObjectRelocatingContent<qt_meta_tag_ZN11PaymentPageE_t>.metaTypes,
+    qt_staticMetaObjectRelocatingContent<qt_meta_tag_ZN11WalletsPageE_t>.metaTypes,
     nullptr
 } };
 
-void PaymentPage::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
+void WalletsPage::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
 {
-    auto *_t = static_cast<PaymentPage *>(_o);
+    auto *_t = static_cast<WalletsPage *>(_o);
     if (_c == QMetaObject::InvokeMetaMethod) {
         switch (_id) {
-        case 0: _t->goDashboard(); break;
-        case 1: _t->onTransferClicked(); break;
+        case 0: _t->onFundClicked(); break;
         default: ;
         }
     }
-    if (_c == QMetaObject::IndexOfMethod) {
-        if (QtMocHelpers::indexOfMethod<void (PaymentPage::*)()>(_a, &PaymentPage::goDashboard, 0))
-            return;
-    }
+    (void)_a;
 }
 
-const QMetaObject *PaymentPage::metaObject() const
+const QMetaObject *WalletsPage::metaObject() const
 {
     return QObject::d_ptr->metaObject ? QObject::d_ptr->dynamicMetaObject() : &staticMetaObject;
 }
 
-void *PaymentPage::qt_metacast(const char *_clname)
+void *WalletsPage::qt_metacast(const char *_clname)
 {
     if (!_clname) return nullptr;
-    if (!strcmp(_clname, qt_staticMetaObjectStaticContent<qt_meta_tag_ZN11PaymentPageE_t>.strings))
+    if (!strcmp(_clname, qt_staticMetaObjectStaticContent<qt_meta_tag_ZN11WalletsPageE_t>.strings))
         return static_cast<void*>(this);
     return QWidget::qt_metacast(_clname);
 }
 
-int PaymentPage::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
+int WalletsPage::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
+{
+    _id = QWidget::qt_metacall(_c, _id, _a);
+    if (_id < 0)
+        return _id;
+    if (_c == QMetaObject::InvokeMetaMethod) {
+        if (_id < 1)
+            qt_static_metacall(this, _c, _id, _a);
+        _id -= 1;
+    }
+    if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
+        if (_id < 1)
+            *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
+        _id -= 1;
+    }
+    return _id;
+}
+namespace {
+struct qt_meta_tag_ZN12TransferPageE_t {};
+} // unnamed namespace
+
+template <> constexpr inline auto TransferPage::qt_create_metaobjectdata<qt_meta_tag_ZN12TransferPageE_t>()
+{
+    namespace QMC = QtMocConstants;
+    QtMocHelpers::StringRefStorage qt_stringData {
+        "TransferPage",
+        "onTransferClicked",
+        ""
+    };
+
+    QtMocHelpers::UintData qt_methods {
+        // Slot 'onTransferClicked'
+        QtMocHelpers::SlotData<void()>(1, 2, QMC::AccessPrivate, QMetaType::Void),
+    };
+    QtMocHelpers::UintData qt_properties {
+    };
+    QtMocHelpers::UintData qt_enums {
+    };
+    return QtMocHelpers::metaObjectData<TransferPage, qt_meta_tag_ZN12TransferPageE_t>(QMC::MetaObjectFlag{}, qt_stringData,
+            qt_methods, qt_properties, qt_enums);
+}
+Q_CONSTINIT const QMetaObject TransferPage::staticMetaObject = { {
+    QMetaObject::SuperData::link<QWidget::staticMetaObject>(),
+    qt_staticMetaObjectStaticContent<qt_meta_tag_ZN12TransferPageE_t>.stringdata,
+    qt_staticMetaObjectStaticContent<qt_meta_tag_ZN12TransferPageE_t>.data,
+    qt_static_metacall,
+    nullptr,
+    qt_staticMetaObjectRelocatingContent<qt_meta_tag_ZN12TransferPageE_t>.metaTypes,
+    nullptr
+} };
+
+void TransferPage::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
+{
+    auto *_t = static_cast<TransferPage *>(_o);
+    if (_c == QMetaObject::InvokeMetaMethod) {
+        switch (_id) {
+        case 0: _t->onTransferClicked(); break;
+        default: ;
+        }
+    }
+    (void)_a;
+}
+
+const QMetaObject *TransferPage::metaObject() const
+{
+    return QObject::d_ptr->metaObject ? QObject::d_ptr->dynamicMetaObject() : &staticMetaObject;
+}
+
+void *TransferPage::qt_metacast(const char *_clname)
+{
+    if (!_clname) return nullptr;
+    if (!strcmp(_clname, qt_staticMetaObjectStaticContent<qt_meta_tag_ZN12TransferPageE_t>.strings))
+        return static_cast<void*>(this);
+    return QWidget::qt_metacast(_clname);
+}
+
+int TransferPage::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
+{
+    _id = QWidget::qt_metacall(_c, _id, _a);
+    if (_id < 0)
+        return _id;
+    if (_c == QMetaObject::InvokeMetaMethod) {
+        if (_id < 1)
+            qt_static_metacall(this, _c, _id, _a);
+        _id -= 1;
+    }
+    if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
+        if (_id < 1)
+            *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
+        _id -= 1;
+    }
+    return _id;
+}
+namespace {
+struct qt_meta_tag_ZN8SwapPageE_t {};
+} // unnamed namespace
+
+template <> constexpr inline auto SwapPage::qt_create_metaobjectdata<qt_meta_tag_ZN8SwapPageE_t>()
+{
+    namespace QMC = QtMocConstants;
+    QtMocHelpers::StringRefStorage qt_stringData {
+        "SwapPage",
+        "onSwapClicked",
+        "",
+        "onAmountChanged",
+        "text"
+    };
+
+    QtMocHelpers::UintData qt_methods {
+        // Slot 'onSwapClicked'
+        QtMocHelpers::SlotData<void()>(1, 2, QMC::AccessPrivate, QMetaType::Void),
+        // Slot 'onAmountChanged'
+        QtMocHelpers::SlotData<void(const QString &)>(3, 2, QMC::AccessPrivate, QMetaType::Void, {{
+            { QMetaType::QString, 4 },
+        }}),
+    };
+    QtMocHelpers::UintData qt_properties {
+    };
+    QtMocHelpers::UintData qt_enums {
+    };
+    return QtMocHelpers::metaObjectData<SwapPage, qt_meta_tag_ZN8SwapPageE_t>(QMC::MetaObjectFlag{}, qt_stringData,
+            qt_methods, qt_properties, qt_enums);
+}
+Q_CONSTINIT const QMetaObject SwapPage::staticMetaObject = { {
+    QMetaObject::SuperData::link<QWidget::staticMetaObject>(),
+    qt_staticMetaObjectStaticContent<qt_meta_tag_ZN8SwapPageE_t>.stringdata,
+    qt_staticMetaObjectStaticContent<qt_meta_tag_ZN8SwapPageE_t>.data,
+    qt_static_metacall,
+    nullptr,
+    qt_staticMetaObjectRelocatingContent<qt_meta_tag_ZN8SwapPageE_t>.metaTypes,
+    nullptr
+} };
+
+void SwapPage::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
+{
+    auto *_t = static_cast<SwapPage *>(_o);
+    if (_c == QMetaObject::InvokeMetaMethod) {
+        switch (_id) {
+        case 0: _t->onSwapClicked(); break;
+        case 1: _t->onAmountChanged((*reinterpret_cast<std::add_pointer_t<QString>>(_a[1]))); break;
+        default: ;
+        }
+    }
+}
+
+const QMetaObject *SwapPage::metaObject() const
+{
+    return QObject::d_ptr->metaObject ? QObject::d_ptr->dynamicMetaObject() : &staticMetaObject;
+}
+
+void *SwapPage::qt_metacast(const char *_clname)
+{
+    if (!_clname) return nullptr;
+    if (!strcmp(_clname, qt_staticMetaObjectStaticContent<qt_meta_tag_ZN8SwapPageE_t>.strings))
+        return static_cast<void*>(this);
+    return QWidget::qt_metacast(_clname);
+}
+
+int SwapPage::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 {
     _id = QWidget::qt_metacall(_c, _id, _a);
     if (_id < 0)
@@ -425,12 +531,6 @@ int PaymentPage::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     }
     return _id;
 }
-
-// SIGNAL 0
-void PaymentPage::goDashboard()
-{
-    QMetaObject::activate(this, &staticMetaObject, 0, nullptr);
-}
 namespace {
 struct qt_meta_tag_ZN11HistoryPageE_t {};
 } // unnamed namespace
@@ -439,14 +539,10 @@ template <> constexpr inline auto HistoryPage::qt_create_metaobjectdata<qt_meta_
 {
     namespace QMC = QtMocConstants;
     QtMocHelpers::StringRefStorage qt_stringData {
-        "HistoryPage",
-        "goDashboard",
-        ""
+        "HistoryPage"
     };
 
     QtMocHelpers::UintData qt_methods {
-        // Signal 'goDashboard'
-        QtMocHelpers::SignalData<void()>(1, 2, QMC::AccessPublic, QMetaType::Void),
     };
     QtMocHelpers::UintData qt_properties {
     };
@@ -468,16 +564,10 @@ Q_CONSTINIT const QMetaObject HistoryPage::staticMetaObject = { {
 void HistoryPage::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
 {
     auto *_t = static_cast<HistoryPage *>(_o);
-    if (_c == QMetaObject::InvokeMetaMethod) {
-        switch (_id) {
-        case 0: _t->goDashboard(); break;
-        default: ;
-        }
-    }
-    if (_c == QMetaObject::IndexOfMethod) {
-        if (QtMocHelpers::indexOfMethod<void (HistoryPage::*)()>(_a, &HistoryPage::goDashboard, 0))
-            return;
-    }
+    (void)_t;
+    (void)_c;
+    (void)_id;
+    (void)_a;
 }
 
 const QMetaObject *HistoryPage::metaObject() const
@@ -496,24 +586,6 @@ void *HistoryPage::qt_metacast(const char *_clname)
 int HistoryPage::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 {
     _id = QWidget::qt_metacall(_c, _id, _a);
-    if (_id < 0)
-        return _id;
-    if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 1)
-            qt_static_metacall(this, _c, _id, _a);
-        _id -= 1;
-    }
-    if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 1)
-            *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
-        _id -= 1;
-    }
     return _id;
-}
-
-// SIGNAL 0
-void HistoryPage::goDashboard()
-{
-    QMetaObject::activate(this, &staticMetaObject, 0, nullptr);
 }
 QT_WARNING_POP
