@@ -1,0 +1,78 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"jsonFile" : "directory-.-Debug-d0094a50bb2071803777.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.16"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "VibePay",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "VibePay::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-VibePay-Debug-07d8163a1a190a6659bd.json",
+					"name" : "VibePay",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "VibePay_autogen::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-VibePay_autogen-Debug-960c736e78692e46ff23.json",
+					"name" : "VibePay_autogen",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "VibePay_autogen_timestamp_deps::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-VibePay_autogen_timestamp_deps-Debug-19467be42661ca594412.json",
+					"name" : "VibePay_autogen_timestamp_deps",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "D:/WORKSPACE/QT_Project/VibePay/build/a1-Debug",
+		"source" : "D:/WORKSPACE/QT_Project/VibePay"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 7
+	}
+}

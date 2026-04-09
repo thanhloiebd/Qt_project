@@ -227,7 +227,7 @@ QList<LinkedBank> Database::getLinkedBanks(int userId) {
     return banks;
 }
 
-bool Database::fundFromBank(int userId, double amount) {
+bool Database::fundFromBank(int userId, double amount, const QString& note) {
     if (amount <= 0) return false;
     
     QSqlQuery query;
@@ -239,9 +239,10 @@ bool Database::fundFromBank(int userId, double amount) {
         QString timestamp = QDateTime::currentDateTime().toString("yyyy-MM-dd HH:mm:ss");
         QSqlQuery tQuery;
         tQuery.prepare("INSERT INTO transactions (from_user_id, to_user_id, currency, amount, note, timestamp, status) "
-                      "VALUES (0, ?, 'VND', ?, 'Nạp tiền từ Ngân hàng', ?, 'Success')");
+                      "VALUES (0, ?, 'VND', ?, ?, ?, 'Success')");
         tQuery.addBindValue(userId);
         tQuery.addBindValue(amount);
+        tQuery.addBindValue(note);
         tQuery.addBindValue(timestamp);
         tQuery.exec();
         return true;

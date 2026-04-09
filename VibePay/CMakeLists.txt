@@ -7,7 +7,7 @@ set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTORCC ON)
 set(CMAKE_AUTOUIC ON)
 
-find_package(Qt6 COMPONENTS Core Gui Widgets Sql REQUIRED)
+find_package(Qt6 COMPONENTS Core Gui Widgets Sql Network REQUIRED)
 
 add_executable(VibePay
     main.cpp
@@ -15,6 +15,8 @@ add_executable(VibePay
     MainWindow.h
     Database.cpp
     Database.h
+    services/PaymentGateway.cpp
+    services/PaymentGateway.h
     pages/LoginPage.cpp
     pages/LoginPage.h
     pages/RegisterPage.cpp
@@ -36,4 +38,5 @@ target_link_libraries(VibePay PRIVATE
     Qt6::Gui
     Qt6::Widgets
     Qt6::Sql
+    Qt6::Network
 )

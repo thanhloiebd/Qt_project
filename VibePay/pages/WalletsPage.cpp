@@ -1,10 +1,13 @@
 #include "WalletsPage.h"
 #include "../Database.h"
+#include "../services/PaymentGateway.h"
 #include <QVBoxLayout>
 #include <QHBoxLayout>
 #include <QPushButton>
 #include <QMessageBox>
 #include <QSettings>
+#include <QDesktopServices>
+#include <QUrl>
 
 WalletsPage::WalletsPage(QWidget* parent) : QWidget(parent) {
     auto layout = new QVBoxLayout(this);
@@ -36,17 +39,24 @@ WalletsPage::WalletsPage(QWidget* parent) : QWidget(parent) {
     hLayout->addWidget(btcCard);
 
     // Fund
-    auto fundTitle = new QLabel("Nạp tiền từ Ngân hàng (Mô phỏng)", this);
+    auto fundTitle = new QLabel("Nạp tiền (Gateway Thật/Sandbox)", this);
     fundTitle->setObjectName("headerLabel");
     
     auto fundCard = new QWidget(this);
     fundCard->setObjectName("cardWidget");
     auto fLayout = new QHBoxLayout(fundCard);
+    
+    gatewayCombo = new QComboBox(fundCard);
+    gatewayCombo->addItem("Cổng VNPay (Sandbox)", "VNPAY");
+    gatewayCombo->addItem("Thẻ Quốc tế Stripe (Sandbox)", "STRIPE");
+    
     fundAmountEdit = new QLineEdit(fundCard);
     fundAmountEdit->setPlaceholderText("Nhập số tiền nạp (VND)");
-    auto fundBtn = new QPushButton("Nạp Tiền", fundCard);
+    
+    auto fundBtn = new QPushButton("Thanh toán Web", fundCard);
     fundBtn->setObjectName("accentButton");
     
+    fLayout->addWidget(gatewayCombo);
     fLayout->addWidget(fundAmountEdit);
     fLayout->addWidget(fundBtn);
 
@@ -58,6 +68,16 @@ WalletsPage::WalletsPage(QWidget* parent) : QWidget(parent) {
     layout->addStretch();
     
     connect(fundBtn, &QPushButton::clicked, this, &WalletsPage::onFundClicked);
+    
+    // Connect Gateway Signals
+    connect(&PaymentGateway::instance(), &PaymentGateway::paymentUrlReceived, 
+            this, &WalletsPage::onPaymentUrlReceived);
+    connect(&PaymentGateway::instance(), &PaymentGateway::paymentUrlFailed, 
+            this, &WalletsPage::onPaymentFailed);
+    connect(&PaymentGateway::instance(), &PaymentGateway::paymentCompleted, 
+            this, &WalletsPage::onPaymentCompleted);
+    connect(&PaymentGateway::instance(), &PaymentGateway::paymentFailed, 
+            this, &WalletsPage::onPaymentFailed);
 }
 
 void WalletsPage::refresh() {
@@ -70,16 +90,60 @@ void WalletsPage::refresh() {
 
 void WalletsPage::onFundClicked() {
     double amount = fundAmountEdit->text().toDouble();
-    if (amount <= 0) {
-        QMessageBox::warning(this, "Lỗi", "Số tiền không hợp lệ!");
+    if (amount < 10000) {
+        QMessageBox::warning(this, "Lỗi", "Số tiền phải từ 10,000 VND trở lên!");
         return;
     }
+    
+    QString gatewayCode = gatewayCombo->currentData().toString();
+    
+    // Gửi tín hiệu gọi API lên mạng
+    fundAmountEdit->setEnabled(false);
+    PaymentGateway::instance().createPaymentUrl(amount, gatewayCode);
+}
+
+void WalletsPage::onPaymentUrlReceived(const QString& url, const QString& txnId) {
+    fundAmountEdit->setEnabled(true);
+    
+    // 1. Mở trình duyệt web hệ thống để giả tỷ người dùng điền thẻ
+    QDesktopServices::openUrl(QUrl(url));
+    
+    // 2. Hiển thị thông báo yêu cầu chờ
+    QMessageBox msgBox(this);
+    msgBox.setWindowTitle("Đang thanh toán...");
+    msgBox.setText(QString("Trình duyệt đã mở URL Thanh toán (%1).\nVui lòng thanh toán trên trình duyệt, sau đó nhấn Kiểm tra!").arg(gatewayCombo->currentText()));
+    
+    QPushButton* checkBtn = msgBox.addButton("Tôi đã thanh toán (Kiểm tra)", QMessageBox::ActionRole);
+    msgBox.addButton("Hủy bỏ", QMessageBox::RejectRole);
+    
+    msgBox.exec();
+    
+    if (msgBox.clickedButton() == checkBtn) {
+        onCheckStatusClicked(txnId);
+    }
+}
+
+void WalletsPage::onCheckStatusClicked(const QString& txnId) {
+    // Gọi API kiểm tra thanh toán (Mã giao dịch)
+    PaymentGateway::instance().checkPaymentStatus(txnId);
+}
+
+void WalletsPage::onPaymentCompleted(double amount, const QString& gateway) {
     int userId = QSettings("VibePay", "App").value("currentUserId", -1).toInt();
-    if (Database::instance().fundFromBank(userId, amount)) {
-        QMessageBox::information(this, "Thành công", "Nạp tiền thành công!");
+    
+    // Cập nhật Database với Ghi chú tương ứng của Gateway
+    QString note = QString("Nạp tiền qua Cổng %1").arg(gateway);
+    
+    if (Database::instance().fundFromBank(userId, amount, note)) {
+        QMessageBox::information(this, "Thành công", QString("Nạp %1 ₫ thành công qua %2!").arg(amount).arg(gateway));
         fundAmountEdit->clear();
         refresh();
     } else {
-        QMessageBox::warning(this, "Lỗi", "Lỗi nạp tiền!");
+        QMessageBox::warning(this, "Lỗi", "Giao dịch thành công ở Bank nhưng lỗi Database!");
     }
+}
+
+void WalletsPage::onPaymentFailed(const QString& errorMsg) {
+    fundAmountEdit->setEnabled(true);
+    QMessageBox::warning(this, "Thanh toán thất bại", errorMsg);
 }

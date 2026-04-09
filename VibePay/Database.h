@@ -48,7 +48,7 @@ public:
     // Ngân hàng Liên kết (Funding)
     bool linkBank(int userId, const QString& bankName, const QString& accountNumber);
     QList<LinkedBank> getLinkedBanks(int userId);
-    bool fundFromBank(int userId, double amount); // Nạp VND từ ngân hàng giả lập
+    bool fundFromBank(int userId, double amount, const QString& note = "Nạp tiền từ Ngân hàng"); // Nạp VND từ ngân hàng giả lập
     
     // Giao dịch và Quy đổi
     // transfer trả về true nếu thành công
